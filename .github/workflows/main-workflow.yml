@@ -9,13 +9,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: setup cmake
-      run: sudo apt install cmake
+    
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y cmake g++
 
-    - name: build
+    - name: Build
       run: |
-        cmake -S . -B build
+        cmake -S . -B build -DCMAKE_CXX_STANDARD=23
         cmake --build build
       
-    - name: run
+    - name: Run tests
       run: build/stats_test
