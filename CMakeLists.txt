@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 project(spring-in-cpp-sudeeprp)
 
-# GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+# Set C++ standard to the latest version: C++23
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
