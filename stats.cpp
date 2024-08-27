@@ -1,8 +1,8 @@
 #include "stats.h"
 #include <vector>
-#include <cmath>  // For NAN and std::abs
-#include <numeric> // For std::accumulate
-#include <algorithm> //For std::max_element and std::min_element
+#include <cmath>    // For NAN and std::abs
+#include <numeric>  // For std::reduce
+#include <ranges>   // For ranges and views
 
 namespace Statistics
 {
@@ -18,15 +18,14 @@ namespace Statistics
             return result;
         }
 
-        // Calculate the average value of the elements in the data vector.
+        // Calculate the average using std::reduce and ranges
         auto const count = static_cast<float>(data.size());
-        result.average = std::accumulate(data.begin(), data.end(), 0.0f) / count;
+        result.average = std::reduce(data.begin(), data.end(), 0.0f) / count;
 
-        // Calculate the maximum and minimum values in the data vector.
-        result.max = *std::max_element(data.begin(), data.end());
-        result.min = *std::min_element(data.begin(), data.end());
+        // Calculate max and min using std::ranges
+        result.max = std::ranges::max(data);
+        result.min = std::ranges::min(data);
 
         return result;
     }
 }
-
