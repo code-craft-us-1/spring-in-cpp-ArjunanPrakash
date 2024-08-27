@@ -3,6 +3,7 @@
 #include <cmath>    // For NAN and std::abs
 #include <numeric>  // For std::reduce
 #include <ranges>   // For ranges and views
+#include <algorithm> // FOr max and min
 
 namespace Statistics
 {
